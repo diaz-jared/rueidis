@@ -3,6 +3,7 @@ package rueidis
 import (
 	"context"
 	"errors"
+	"fmt"
 	"io"
 	"net"
 	"strconv"
@@ -305,6 +306,22 @@ func (c *clusterClient) _refresh() (err error) {
 	}
 
 	c.mu.Lock()
+	fmt.Printf("Cluster topology refreshment: %d nodes, %d slots\n", len(conns), len(pslots))
+
+	fmt.Println("Primary slot assignment:")
+	for i, conn := range pslots {
+		if conn != nil {
+			fmt.Printf("Slot %d => %s\n", i, conn.Addr())
+		}
+	}
+
+	fmt.Println("Replica slot assignment:")
+	for i, conn := range rslots {
+		if conn != nil {
+			fmt.Printf("Slot %d => %s\n", i, conn.Addr())
+		}
+	}
+
 	c.pslots = pslots
 	c.rslots = rslots
 	c.conns = conns
