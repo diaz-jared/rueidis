@@ -313,6 +313,9 @@ func (c *clusterClient) _refresh() (err error) {
 	c.pslots = pslots
 	c.rslots = rslots
 	c.conns = conns
+	for key, val := range c.conns {
+		fmt.Printf("THIS CONNECTION: Command connection %s %s\n", key, val.conn.Addr())
+	}
 	c.mu.Unlock()
 
 	if len(removes) > 0 {
