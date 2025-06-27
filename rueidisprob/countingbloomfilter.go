@@ -6,7 +6,7 @@ import (
 	"math"
 	"strconv"
 
-	"github.com/redis/rueidis"
+	"github.com/diaz-jared/rueidis"
 )
 
 var (

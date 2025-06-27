@@ -1,4 +1,4 @@
-module github.com/redis/rueidis
+module github.com/diaz-jared/rueidis
 
 go 1.23.0
 

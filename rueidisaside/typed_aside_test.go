@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/redis/rueidis"
+	"github.com/diaz-jared/rueidis"
 )
 
 type testStruct struct {

@@ -10,11 +10,11 @@ import (
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
 
-	"github.com/redis/rueidis"
+	"github.com/diaz-jared/rueidis"
 )
 
 var (
-	name   = "github.com/redis/rueidis"
+	name   = "github.com/diaz-jared/rueidis"
 	kind   = trace.WithSpanKind(trace.SpanKindClient)
 	dbattr = attribute.String("db.system", "redis")
 	dbstmt = attribute.Key("db.statement")

@@ -10,7 +10,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/redis/rueidis/internal/cmds"
+	"github.com/diaz-jared/rueidis/internal/cmds"
 )
 
 const PTTL = 50

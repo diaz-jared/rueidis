@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/redis/rueidis/internal/cmds"
+	"github.com/diaz-jared/rueidis/internal/cmds"
 )
 
 type mockConn struct {

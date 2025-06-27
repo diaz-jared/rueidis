@@ -13,7 +13,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/redis/rueidis/internal/cmds"
+	"github.com/diaz-jared/rueidis/internal/cmds"
 )
 
 func setupMux(wires []*mockWire) (conn *mux, checkClean func(t *testing.T)) {

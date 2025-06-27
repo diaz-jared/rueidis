@@ -1,6 +1,6 @@
 package rueidislimiter
 
-import "github.com/redis/rueidis/internal/util"
+import "github.com/diaz-jared/rueidis/internal/util"
 
 var rateBuffersPool = util.NewPool(func(capacity int) *rateBuffersContainer {
 	return &rateBuffersContainer{

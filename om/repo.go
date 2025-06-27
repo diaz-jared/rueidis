@@ -5,8 +5,8 @@ import (
 	"errors"
 	"time"
 
-	"github.com/redis/rueidis"
-	"github.com/redis/rueidis/internal/cmds"
+	"github.com/diaz-jared/rueidis"
+	"github.com/diaz-jared/rueidis/internal/cmds"
 )
 
 type (

@@ -5,7 +5,7 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/redis/rueidis/internal/util"
+	"github.com/diaz-jared/rueidis/internal/util"
 )
 
 const (

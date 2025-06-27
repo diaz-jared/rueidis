@@ -9,8 +9,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/redis/rueidis/internal/cmds"
-	"github.com/redis/rueidis/internal/util"
+	"github.com/diaz-jared/rueidis/internal/cmds"
+	"github.com/diaz-jared/rueidis/internal/util"
 )
 
 type connFn func(dst string, opt *ClientOption) conn

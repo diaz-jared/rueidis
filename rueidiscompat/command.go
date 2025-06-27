@@ -35,8 +35,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/redis/rueidis"
-	"github.com/redis/rueidis/internal/util"
+	"github.com/diaz-jared/rueidis"
+	"github.com/diaz-jared/rueidis/internal/util"
 )
 
 type Cmder interface {
