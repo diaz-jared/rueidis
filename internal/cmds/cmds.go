@@ -1,6 +1,8 @@
 package cmds
 
-import "strings"
+import (
+	"strings"
+)
 
 const (
 	optInTag = uint16(1 << 15)

@@ -47,6 +47,9 @@ type connrole struct {
 }
 
 var replicaOnlySelector = func(_ uint16, replicas []ReplicaInfo) int {
+	for _, r := range replicas {
+		fmt.Printf("Line 463: Picking replica  %s\n", r.Addr)
+	}
 	return util.FastRand(len(replicas))
 }
 
@@ -533,6 +536,7 @@ retry:
 	fmt.Printf("Line 519: Attempt %d for command %s\n", attempts, cmd.Commands())
 	fmt.Printf("Line 520: Command slot %d, toReplica %v\n", cmd.Slot(), c.toReplica(cmd))
 	cc, err := c.pick(ctx, cmd.Slot(), c.toReplica(cmd))
+	fmt.Printf("Line 521: Command connection %s\n", cc.Addr())
 	if err != nil {
 		return newErrResult(err)
 	}
