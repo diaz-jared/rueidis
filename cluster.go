@@ -460,8 +460,10 @@ func (c *clusterClient) _pick(slot uint16, toReplica bool) (p conn) {
 			break
 		}
 	} else if toReplica && c.rslots != nil {
+		fmt.Printf("Line 463: Picking replica for slot %d\n", slot)
 		p = c.rslots[slot]
 	} else {
+		fmt.Printf("Line 466: Picking primary for slot %d\n", slot)
 		p = c.pslots[slot]
 	}
 	c.mu.RUnlock()
@@ -528,6 +530,8 @@ func (c *clusterClient) Do(ctx context.Context, cmd Completed) (resp RedisResult
 func (c *clusterClient) do(ctx context.Context, cmd Completed) (resp RedisResult) {
 	attempts := 1
 retry:
+	fmt.Printf("Line 519: Attempt %d for command %s\n", attempts, cmd.Commands())
+	fmt.Printf("Line 520: Command slot %d, toReplica %v\n", cmd.Slot(), c.toReplica(cmd))
 	cc, err := c.pick(ctx, cmd.Slot(), c.toReplica(cmd))
 	if err != nil {
 		return newErrResult(err)
