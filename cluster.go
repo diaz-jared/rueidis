@@ -309,21 +309,6 @@ func (c *clusterClient) _refresh() (err error) {
 	}
 
 	c.mu.Lock()
-	fmt.Printf("Cluster topology refreshment: %d nodes, %d slots\n", len(conns), len(pslots))
-
-	fmt.Println("Primary slot assignment:")
-	for i, conn := range pslots {
-		if conn != nil {
-			fmt.Printf("Slot %d => %s\n", i, conn.Addr())
-		}
-	}
-
-	fmt.Println("Replica slot assignment:")
-	for i, conn := range rslots {
-		if conn != nil {
-			fmt.Printf("Slot %d => %s\n", i, conn.Addr())
-		}
-	}
 
 	c.pslots = pslots
 	c.rslots = rslots
@@ -460,13 +445,12 @@ func (c *clusterClient) _pick(slot uint16, toReplica bool) (p conn) {
 	if slot == cmds.InitSlot {
 		for _, cc := range c.conns {
 			p = cc.conn
+			fmt.Print("Line 462 in _pick: Picking primary for slot ", p.Addr(), "\n")
 			break
 		}
 	} else if toReplica && c.rslots != nil {
-		fmt.Printf("Line 463: Picking replica for slot %d\n", slot)
 		p = c.rslots[slot]
 	} else {
-		fmt.Printf("Line 466: Picking primary for slot %d\n", slot)
 		p = c.pslots[slot]
 	}
 	c.mu.RUnlock()
@@ -541,6 +525,7 @@ retry:
 		return newErrResult(err)
 	}
 	resp = cc.Do(ctx, cmd)
+	fmt.Printf("Line 524: Command response %s\n", resp.Error())
 	if resp.NonRedisError() == errConnExpired {
 		goto retry
 	}
